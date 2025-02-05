@@ -1,13 +1,13 @@
 import { useQuery } from "@tanstack/react-query";
 import { Pokemon } from "../../@types/pokemon";
-import { ApiResponse } from "@/api/ApiResponse";
 import { fetchPokemonDetails } from "./pokemonDetailsQuery";
+import { ApiResponse } from "../../api/ApiResponse";
 
 export const getAllPokemons = async (): Promise<ApiResponse<Pokemon[]>> => {
-  const response = await fetch("https://pokeapi.co/api/v2/pokemon?limit=20");
-  const data = await response.json();
+  const response = await fetch("https://pokeapi.co/api/v2/pokemon?limit=50");
+  const { results } = await response.json();
   return {
-    data: data.results,
+    data: results,
     message: "Pokémons fetched successfully",
   };
 };
@@ -21,7 +21,7 @@ export function usePokemons() {
         data.map((pokemon) => fetchPokemonDetails(pokemon.url))
       );
       return {
-        data: pokemonWithImages,
+        data: pokemonWithImages.filter(Boolean),
         message: "Pokémons fetched successfully",
       };
     },
