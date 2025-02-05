@@ -3,3 +3,9 @@ export interface Pokemon {
   url: string;
   image?: string;
 }
+
+export interface PokemonDetails {
+  sprites: {
+    front_default: string;
+  };
+}
