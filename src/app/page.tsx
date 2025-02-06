@@ -50,37 +50,45 @@ const Home = () => {
     setCurrentPage(page);
   };
 
-  if (isLoading) return <p>Loading...</p>;
+  if (isLoading)
+    return <p className="text-center text-gray-500">Carregando...</p>;
 
   return (
-    <div>
-      <h1>Pokémon List</h1>
-      <h2>Favorites:</h2>
-      <ul>
-        {favorites.map((pokemon) => (
-          <li key={pokemon.name}>{pokemon.name}</li>
-        ))}
-      </ul>
+    <div className="min-h-screen bg-gray-50 py-8">
+      <div className="container mx-auto px-4">
+        <h1 className="text-4xl font-bold text-center text-blue-600 mb-6">
+          Pokémon List
+        </h1>
 
-      <Link href="/favorite">
-        <button>Go to Favorites</button>
-      </Link>
+        <Link href="/favorite">
+          <span className="block text-center text-blue-500 hover:text-blue-700 font-semibold mb-8">
+            Ir para os Favoritos
+          </span>
+        </Link>
 
-      {currentPokemons?.map((pokemon) => (
-        <div key={pokemon.name} className="pokemon-card">
-          <PokemonCard
-            pokemon={pokemon}
-            onLike={handleLike}
-            onDislike={handleDislike}
+        <div className="flex flex-wrap gap-8 justify-center">
+          {currentPokemons?.map((pokemon) => (
+            <div
+              key={pokemon.name}
+              className="pokemon-card w-full sm:w-1/2 md:w-1/3 lg:w-1/4 xl:w-1/5 bg-white rounded-lg shadow-lg overflow-hidden transition-transform duration-300 ease-in-out transform hover:scale-105"
+            >
+              <PokemonCard
+                pokemon={pokemon}
+                onLike={handleLike}
+                onDislike={handleDislike}
+              />
+            </div>
+          ))}
+        </div>
+
+        <div className="flex justify-center mt-8">
+          <Pagination
+            currentPage={currentPage}
+            totalPages={totalPages}
+            onPageChange={handlePageChange}
           />
         </div>
-      ))}
-
-      <Pagination
-        currentPage={currentPage}
-        totalPages={totalPages}
-        onPageChange={handlePageChange}
-      />
+      </div>
     </div>
   );
 };

@@ -3,6 +3,7 @@ export interface Pokemon {
   url: string;
   image?: string;
   abilities?: string[];
+  categories?: string[];
 }
 
 export interface Ability {
@@ -17,6 +18,11 @@ export interface PokemonDetails {
     front_default: string;
   };
   abilities: Ability[];
+  types: {
+    type: {
+      name: string;
+    };
+  }[];
 }
 
 export interface PokemonCardProps {
@@ -29,6 +35,7 @@ export interface ButtonProps {
   onClick: () => void;
   text: string;
   icon: React.ReactNode;
+  className?: string;
 }
 
 export interface PaginationProps {

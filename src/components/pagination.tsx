@@ -24,8 +24,12 @@ const Pagination: React.FC<PaginationProps> = ({
   }
 
   return (
-    <div className="pagination">
-      <button onClick={handlePrev} disabled={currentPage === 1}>
+    <div className="flex items-center justify-center space-x-4 py-4">
+      <button
+        onClick={handlePrev}
+        disabled={currentPage === 1}
+        className="px-4 py-2 text-white bg-gray-600 rounded-lg hover:bg-gray-700 disabled:bg-gray-400 transition duration-200"
+      >
         Previous
       </button>
 
@@ -33,13 +37,21 @@ const Pagination: React.FC<PaginationProps> = ({
         <button
           key={page}
           onClick={() => handlePageClick(page)}
-          className={currentPage === page ? "active" : ""}
+          className={`px-4 py-2 rounded-lg ${
+            currentPage === page
+              ? "bg-indigo-600 text-white"
+              : "bg-gray-200 text-gray-700 hover:bg-gray-300"
+          } transition duration-200`}
         >
           {page}
         </button>
       ))}
 
-      <button onClick={handleNext} disabled={currentPage === totalPages}>
+      <button
+        onClick={handleNext}
+        disabled={currentPage === totalPages}
+        className="px-4 py-2 text-white bg-gray-600 rounded-lg hover:bg-gray-700 disabled:bg-gray-400 transition duration-200"
+      >
         Next
       </button>
     </div>

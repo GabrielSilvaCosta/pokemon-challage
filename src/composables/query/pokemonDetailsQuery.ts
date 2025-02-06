@@ -15,6 +15,7 @@ export const fetchPokemonDetails = async (
       url,
       image: details.sprites.front_default,
       abilities: details.abilities.map((a) => a.ability.name),
+      categories: details.types.map((type) => type.type.name),
     };
   } catch (error) {
     console.error(error);
