@@ -77,18 +77,20 @@ const Home = () => {
         </div>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-6">
-          {currentPokemons?.map((pokemon) => (
-            <div
-              key={pokemon.name}
-              className="pokemon-card bg-white rounded-xl shadow-lg overflow-hidden transform transition duration-300 hover:scale-105 hover:shadow-xl"
-            >
-              <PokemonCard
-                pokemon={pokemon}
-                onLike={handleLike}
-                onDislike={handleDislike}
-              />
-            </div>
-          ))}
+          {currentPokemons
+            ?.filter((pokemon): pokemon is Pokemon => pokemon !== null)
+            .map((pokemon) => (
+              <div
+                key={pokemon.name}
+                className="pokemon-card bg-white rounded-xl shadow-lg overflow-hidden transform transition duration-300 hover:scale-105 hover:shadow-xl"
+              >
+                <PokemonCard
+                  pokemon={pokemon}
+                  onLike={handleLike}
+                  onDislike={handleDislike}
+                />
+              </div>
+            ))}
         </div>
 
         <div className="flex justify-center mt-10">
