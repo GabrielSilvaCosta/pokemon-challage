@@ -1,11 +1,10 @@
-import { useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { useFocusEffect } from "@react-navigation/native";
 import HomeScreen from "../screens/HomeScreen";
 import FavoritesScreen from "../screens/FavoriteScreen";
-import React from "react";
-//
+
 const Tab = createBottomTabNavigator();
 
 export default function App() {
