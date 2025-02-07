@@ -4,13 +4,14 @@ import { usePokemons } from "../composables/query/pokemonQuery";
 import { Pokemon } from "../@types/pokemon";
 import { PokemonCard } from "../components/pokemonCard";
 import Pagination from "../components/pagination";
-import Link from "next/link";
+import { useRouter } from "next/navigation";
 
 const Home = () => {
   const { data: pokemons, isLoading } = usePokemons();
   const [favorites, setFavorites] = useState<Pokemon[]>([]);
   const [currentPage, setCurrentPage] = useState(1);
   const [pokemonsPerPage] = useState(20);
+  const router = useRouter();
 
   useEffect(() => {
     const storedFavorites = localStorage.getItem("favorites");
@@ -60,11 +61,12 @@ const Home = () => {
           Pokémon List
         </h1>
 
-        <Link href="/favorite">
-          <span className="block text-center text-blue-500 hover:text-blue-700 font-semibold mb-8">
-            Ir para os Favoritos
-          </span>
-        </Link>
+        <button
+          className="block text-center text-blue-500 hover:text-blue-700 font-semibold mb-8"
+          onClick={() => router.push("/favorite")}
+        >
+          Meus Favoritos
+        </button>
 
         <div className="flex flex-wrap gap-8 justify-center">
           {currentPokemons?.map((pokemon) => (

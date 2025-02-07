@@ -2,48 +2,53 @@
 import { useState, useEffect } from "react";
 import { Pokemon } from "../@types/pokemon";
 import { PokemonCard } from "../components/pokemonCard";
-
+import { useRouter } from "next/navigation";
+import styles from "../css/favorite.module.css";
 const getFavoritesFromStorage = (): Pokemon[] => {
   const favorites = localStorage.getItem("favorites");
   return favorites ? JSON.parse(favorites) : [];
 };
 
-const Favorites = () => {
+export default function Favorite() {
   const [favorites, setFavorites] = useState<Pokemon[]>([]);
+  const router = useRouter();
 
   useEffect(() => {
     setFavorites(getFavoritesFromStorage());
   }, []);
 
+  const handleDislike = (name: string) => {
+    const updatedFavorites = favorites.filter((fav) => fav.name !== name);
+    setFavorites(updatedFavorites);
+    localStorage.setItem("favorites", JSON.stringify(updatedFavorites));
+  };
+
+  const handleGoBack = () => {
+    router.push("/");
+  };
+
   return (
-    <div className="min-h-screen bg-gray-50 py-8">
-      <div className="container mx-auto px-4">
-        <h1 className="text-4xl font-bold text-center text-red-900 mb-6">
-          Meus Favoritos
-        </h1>
+    <div className={styles.favoritePage}>
+      <div className={styles.container}>
+        <h1 className={styles.title}>Meus Favoritos</h1>
+
+        <button onClick={handleGoBack} className={styles.backButton}>
+          Voltar para a Lista de Pokémon
+        </button>
 
         {favorites.length === 0 ? (
-          <p className="text-xl text-center text-gray-600">
+          <p className={styles.emptyMessage}>
             Você ainda não tem Pokémon favoritos!
           </p>
         ) : (
-          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-6">
+          <div className={styles.pokemonGrid}>
             {favorites.map((pokemon) => (
-              <div key={pokemon.name} className="flex justify-center">
-                <div className="pokemon-card shadow-lg rounded-lg overflow-hidden bg-white">
+              <div key={pokemon.name} className={styles.pokemonItem}>
+                <div className={styles.pokemonCard}>
                   <PokemonCard
                     pokemon={pokemon}
                     onLike={() => {}}
-                    onDislike={(name) => {
-                      const updatedFavorites = favorites.filter(
-                        (fav) => fav.name !== name
-                      );
-                      setFavorites(updatedFavorites);
-                      localStorage.setItem(
-                        "favorites",
-                        JSON.stringify(updatedFavorites)
-                      );
-                    }}
+                    onDislike={() => handleDislike(pokemon.name)}
                   />
                 </div>
               </div>
@@ -53,6 +58,4 @@ const Favorites = () => {
       </div>
     </div>
   );
-};
-
-export default Favorites;
+}

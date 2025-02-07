@@ -56,13 +56,13 @@ export const PokemonCard: React.FC<PokemonCardProps> = ({
           onClick={handleLike}
           text="Curtir"
           icon={<LikeIcon />}
-          className="bg-green-500 hover:bg-green-600 text-white w-full"
+          className="bg-blue-500 hover:bg-blue-600 focus:ring-blue-300"
         />
         <Button
           onClick={handleDislike}
           text="Descurtir"
           icon={<DislikeIcon />}
-          className="bg-red-500 hover:bg-red-600 text-white w-full"
+          className="bg-red-500 hover:bg-red-600 focus:ring-red-300"
         />
       </div>
     </div>

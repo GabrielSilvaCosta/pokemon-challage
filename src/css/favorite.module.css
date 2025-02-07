@@ -1,0 +1,67 @@
+.favoritePage {
+  min-height: 100vh;
+  background: linear-gradient(to bottom, #f7f7f7, #e2e2e2);
+  padding: 50px 0;
+}
+
+.container {
+  width: 80%;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.title {
+  font-size: 3rem;
+  font-weight: bold;
+  color: #333;
+  margin-bottom: 30px;
+}
+
+.backButton {
+  display: inline-block;
+  margin-bottom: 30px;
+  padding: 10px 20px;
+  font-size: 1.2rem;
+  color: #007bff;
+  background-color: transparent;
+  border: 2px solid #007bff;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+.backButton:hover {
+  background-color: #007bff;
+  color: #fff;
+}
+
+.emptyMessage {
+  font-size: 1.5rem;
+  color: #555;
+}
+
+.pokemonGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 20px;
+}
+
+.pokemonItem {
+  transition: transform 0.3s ease-in-out;
+}
+
+.pokemonItem:hover {
+  transform: scale(1.05);
+}
+
+.pokemonCard {
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  border-radius: 10px;
+  overflow: hidden;
+  background: #fff;
+  transition: box-shadow 0.3s ease-in-out;
+}
+
+.pokemonCard:hover {
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
+}
