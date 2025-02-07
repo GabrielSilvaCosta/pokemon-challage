@@ -5,6 +5,8 @@ import { Pokemon } from "../@types/pokemon";
 import { PokemonCard } from "../components/pokemonCard";
 import Pagination from "../components/pagination";
 import { useRouter } from "next/navigation";
+import Image from "next/image";
+import pokemonLogo from "../assets/pokemon-logo.png";
 
 const Home = () => {
   const { data: pokemons, isLoading } = usePokemons();
@@ -32,7 +34,9 @@ const Home = () => {
   };
 
   const handleDislike = (name: string) => {
-    setFavorites((prev) => prev.filter((pokemon) => pokemon.name !== name));
+    const updatedFavorites = favorites.filter((fav) => fav.name !== name);
+    setFavorites(updatedFavorites);
+    localStorage.setItem("favorites", JSON.stringify(updatedFavorites));
 
     // Emite um evento customizado de "descurtir"
     const event = new CustomEvent("pokemonDisliked", { detail: name });
@@ -55,24 +59,28 @@ const Home = () => {
     return <p className="text-center text-gray-500">Carregando...</p>;
 
   return (
-    <div className="min-h-screen bg-gray-50 py-8">
-      <div className="container mx-auto px-4">
-        <h1 className="text-4xl font-bold text-center text-blue-600 mb-6">
-          Pokémon List
-        </h1>
+    <div className="relative min-h-screen bg-cover bg-center">
+      <div className="container mx-auto px-4 md:px-8 relative z-10">
+        <div className="flex justify-between items-center mb-6">
+          <Image
+            src={pokemonLogo}
+            alt="Pokemon Logo"
+            width={200}
+            height={100}
+          />
+          <button
+            className="bg-blue-700 hover:bg-blue-800 text-white font-semibold py-3 px-6 rounded-lg shadow-md transition duration-300 transform hover:scale-105"
+            onClick={() => router.push("/favorite")}
+          >
+            Meus Favoritos
+          </button>
+        </div>
 
-        <button
-          className="block text-center text-blue-500 hover:text-blue-700 font-semibold mb-8"
-          onClick={() => router.push("/favorite")}
-        >
-          Meus Favoritos
-        </button>
-
-        <div className="flex flex-wrap gap-8 justify-center">
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-6">
           {currentPokemons?.map((pokemon) => (
             <div
               key={pokemon.name}
-              className="pokemon-card w-full sm:w-1/2 md:w-1/3 lg:w-1/4 xl:w-1/5 bg-white rounded-lg shadow-lg overflow-hidden transition-transform duration-300 ease-in-out transform hover:scale-105"
+              className="pokemon-card bg-white rounded-xl shadow-lg overflow-hidden transform transition duration-300 hover:scale-105 hover:shadow-xl"
             >
               <PokemonCard
                 pokemon={pokemon}
@@ -83,7 +91,7 @@ const Home = () => {
           ))}
         </div>
 
-        <div className="flex justify-center mt-8">
+        <div className="flex justify-center mt-10">
           <Pagination
             currentPage={currentPage}
             totalPages={totalPages}

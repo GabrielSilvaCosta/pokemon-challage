@@ -45,11 +45,8 @@ export default function Favorite() {
             {favorites.map((pokemon) => (
               <div key={pokemon.name} className={styles.pokemonItem}>
                 <div className={styles.pokemonCard}>
-                  <PokemonCard
-                    pokemon={pokemon}
-                    onLike={() => {}}
-                    onDislike={() => handleDislike(pokemon.name)}
-                  />
+                  <img src={pokemon.image} alt={pokemon.name} />
+                  <h2>{pokemon.name}</h2>
                 </div>
               </div>
             ))}
