@@ -5,7 +5,7 @@ import { useFocusEffect } from "@react-navigation/native";
 import HomeScreen from "../screens/HomeScreen";
 import FavoritesScreen from "../screens/FavoriteScreen";
 import React from "react";
-
+//
 const Tab = createBottomTabNavigator();
 
 export default function App() {
