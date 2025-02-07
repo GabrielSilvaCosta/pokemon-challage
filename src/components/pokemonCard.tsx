@@ -8,24 +8,23 @@ export const PokemonCard: React.FC<PokemonCardProps> = ({
   onLike,
   onDislike,
 }) => {
+  // Função genérica para enviar eventos para a WebView do React Native
+  const sendMessageToWebView = (type: string, data: any) => {
+    if (typeof window !== "undefined" && (window as any).ReactNativeWebView) {
+      (window as any).ReactNativeWebView.postMessage(
+        JSON.stringify({ type, ...data })
+      );
+    }
+  };
+
   const handleLike = () => {
     onLike(pokemon);
-    // Este código será adicionado posteriormente no React Native, para enviar a mensagem via WebView
-    // if (typeof window !== "undefined" && (window as any).ReactNativeWebView) {
-    //   (window as any).ReactNativeWebView.postMessage(
-    //     JSON.stringify({ type: "like", pokemon })
-    //   );
-    // }
+    sendMessageToWebView("LIKE", { pokemon });
   };
 
   const handleDislike = () => {
     onDislike(pokemon.name);
-    // Este código será adicionado posteriormente no React Native, para enviar a mensagem via WebView
-    // if (typeof window !== "undefined" && (window as any).ReactNativeWebView) {
-    //   (window as any).ReactNativeWebView.postMessage(
-    //     JSON.stringify({ type: "dislike", name: pokemon.name })
-    //   );
-    // }
+    sendMessageToWebView("DISLIKE", { name: pokemon.name });
   };
 
   return (
