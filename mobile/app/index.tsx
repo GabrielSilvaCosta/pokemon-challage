@@ -1,30 +1,17 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext } from "react";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
-import { NavigationContainer, useFocusEffect } from "@react-navigation/native";
-import AsyncStorage from "@react-native-async-storage/async-storage";
 import Ionicons from "react-native-vector-icons/Ionicons";
 import HomeScreen from "./screens/HomeScreen";
 import FavoritesScreen from "./screens/FavoritesScreen";
-import { useCallback } from "react";
+import {
+  FavoritesProvider,
+  FavoritesContext,
+} from "../app/context/FavoritesContext";
 
 const Tab = createBottomTabNavigator();
 
-const FavoritesWrapper = ({ setFavoritesCount }) => {
-  useFocusEffect(
-    useCallback(() => {
-      const loadFavoritesCount = async () => {
-        const favorites = await AsyncStorage.getItem("favorites");
-        setFavoritesCount(favorites ? JSON.parse(favorites).length : 0);
-      };
-      loadFavoritesCount();
-    }, [])
-  );
-
-  return <FavoritesScreen />;
-};
-
-const App = () => {
-  const [favoritesCount, setFavoritesCount] = useState(0);
+const AppNavigator = () => {
+  const { favorites } = useContext(FavoritesContext);
 
   return (
     <Tab.Navigator
@@ -43,14 +30,19 @@ const App = () => {
       <Tab.Screen name="Home" component={HomeScreen} />
       <Tab.Screen
         name="Favorites"
+        component={FavoritesScreen}
         options={{
-          tabBarBadge: favoritesCount > 0 ? favoritesCount : undefined,
+          tabBarBadge: favorites.length > 0 ? favorites.length : undefined,
         }}
-      >
-        {() => <FavoritesWrapper setFavoritesCount={setFavoritesCount} />}
-      </Tab.Screen>
+      />
     </Tab.Navigator>
   );
 };
 
-export default App;
+export default function App() {
+  return (
+    <FavoritesProvider>
+      <AppNavigator />
+    </FavoritesProvider>
+  );
+}

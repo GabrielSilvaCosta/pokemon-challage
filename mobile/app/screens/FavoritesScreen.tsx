@@ -1,4 +1,4 @@
-import React, { useState, useCallback } from "react";
+import React, { useContext } from "react";
 import {
   View,
   Text,
@@ -7,35 +7,14 @@ import {
   TouchableOpacity,
   Alert,
 } from "react-native";
-import AsyncStorage from "@react-native-async-storage/async-storage";
-import { useFocusEffect } from "@react-navigation/native";
+import { FavoritesContext } from "../context/FavoritesContext";
 
 const FavoritesScreen = () => {
-  const [favorites, setFavorites] = useState([]);
+  const { favorites, removeFavorite } = useContext(FavoritesContext);
 
-  useFocusEffect(
-    useCallback(() => {
-      const loadFavorites = async () => {
-        try {
-          const storedFavorites = await AsyncStorage.getItem("favorites");
-          setFavorites(storedFavorites ? JSON.parse(storedFavorites) : []);
-        } catch (error) {
-          console.error("Erro ao carregar favoritos:", error);
-        }
-      };
-      loadFavorites();
-    }, [])
-  );
-
-  const handleDislike = async (name) => {
-    try {
-      const updatedFavorites = favorites.filter((fav) => fav.name !== name);
-      await AsyncStorage.setItem("favorites", JSON.stringify(updatedFavorites));
-      setFavorites(updatedFavorites);
-      Alert.alert("Descurtido", `Você descurtiu ${name}.`);
-    } catch (error) {
-      console.error("Erro ao descurtir Pokémon:", error);
-    }
+  const handleDislike = (name) => {
+    removeFavorite(name);
+    Alert.alert("Descurtido", `Você descurtiu ${name}.`);
   };
 
   const renderItem = ({ item }) => (
