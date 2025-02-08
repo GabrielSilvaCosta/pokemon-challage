@@ -8,7 +8,6 @@ export const PokemonCard: React.FC<PokemonCardProps> = ({
   onLike,
   onDislike,
 }) => {
-  // Função genérica para enviar eventos para a WebView do React Native
   const sendMessageToWebView = (type: string, data: any) => {
     if (typeof window !== "undefined" && (window as any).ReactNativeWebView) {
       (window as any).ReactNativeWebView.postMessage(
