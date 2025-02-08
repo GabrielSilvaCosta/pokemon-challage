@@ -1,11 +1,11 @@
 import React, { useContext } from "react";
-import { WebView } from "react-native-webview";
+import { WebView, WebViewMessageEvent } from "react-native-webview";
 import { FavoritesContext } from "../context/FavoritesContext";
 
-const HomeScreen = () => {
-  const { addFavorite, removeFavorite } = useContext(FavoritesContext);
+const HomeScreen: React.FC = () => {
+  const { addFavorite, removeFavorite } = useContext(FavoritesContext)!;
 
-  const handleMessage = (event) => {
+  const handleMessage = (event: WebViewMessageEvent) => {
     try {
       const message = JSON.parse(event.nativeEvent.data);
 

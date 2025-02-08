@@ -7,20 +7,19 @@ import {
   FavoritesProvider,
   FavoritesContext,
 } from "../app/context/FavoritesContext";
+import { RootTabParamList, TabBarIconProps } from "../app/types/pokemonMobile";
 
-const Tab = createBottomTabNavigator();
+const Tab = createBottomTabNavigator<RootTabParamList>();
 
-const AppNavigator = () => {
-  const { favorites } = useContext(FavoritesContext);
+const AppNavigator: React.FC = () => {
+  const { favorites } = useContext(FavoritesContext)!;
 
   return (
     <Tab.Navigator
       screenOptions={({ route }) => ({
-        tabBarIcon: ({ color, size }) => {
-          let iconName;
-          if (route.name === "Home") {
-            iconName = "home-outline";
-          } else if (route.name === "Favorites") {
+        tabBarIcon: ({ color, size }: TabBarIconProps) => {
+          let iconName: string = "home-outline";
+          if (route.name === "Favorites") {
             iconName = "heart-outline";
           }
           return <Ionicons name={iconName} size={size} color={color} />;
@@ -39,10 +38,12 @@ const AppNavigator = () => {
   );
 };
 
-export default function App() {
+const App: React.FC = () => {
   return (
     <FavoritesProvider>
       <AppNavigator />
     </FavoritesProvider>
   );
-}
+};
+
+export default App;

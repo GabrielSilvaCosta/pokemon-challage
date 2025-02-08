@@ -1,10 +1,19 @@
-import React, { createContext, useState, useEffect } from "react";
+import React, { createContext, useState, useEffect, ReactNode } from "react";
 import AsyncStorage from "@react-native-async-storage/async-storage";
+import {
+  Pokemon,
+  FavoritesContextType,
+  FavoritesProviderProps,
+} from "../types/pokemonMobile";
 
-export const FavoritesContext = createContext();
+export const FavoritesContext = createContext<FavoritesContextType | undefined>(
+  undefined
+);
 
-export const FavoritesProvider = ({ children }) => {
-  const [favorites, setFavorites] = useState([]);
+export const FavoritesProvider: React.FC<FavoritesProviderProps> = ({
+  children,
+}) => {
+  const [favorites, setFavorites] = useState<Pokemon[]>([]);
 
   useEffect(() => {
     const loadFavorites = async () => {
@@ -18,7 +27,7 @@ export const FavoritesProvider = ({ children }) => {
     loadFavorites();
   }, []);
 
-  const addFavorite = async (pokemon) => {
+  const addFavorite = async (pokemon: Pokemon) => {
     try {
       const updatedFavorites = [...favorites, pokemon];
       setFavorites(updatedFavorites);
@@ -28,7 +37,7 @@ export const FavoritesProvider = ({ children }) => {
     }
   };
 
-  const removeFavorite = async (name) => {
+  const removeFavorite = async (name: string) => {
     try {
       const updatedFavorites = favorites.filter((fav) => fav.name !== name);
       setFavorites(updatedFavorites);

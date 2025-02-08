@@ -8,16 +8,17 @@ import {
   Alert,
 } from "react-native";
 import { FavoritesContext } from "../context/FavoritesContext";
+import { Pokemon } from "../types/pokemonMobile";
 
-const FavoritesScreen = () => {
-  const { favorites, removeFavorite } = useContext(FavoritesContext);
+const FavoritesScreen: React.FC = () => {
+  const { favorites, removeFavorite } = useContext(FavoritesContext)!;
 
-  const handleDislike = (name) => {
+  const handleDislike = (name: string) => {
     removeFavorite(name);
     Alert.alert("Descurtido", `Você descurtiu ${name}.`);
   };
 
-  const renderItem = ({ item }) => (
+  const renderItem = ({ item }: { item: Pokemon }) => (
     <View style={styles.item}>
       <Text style={styles.title}>{item.name}</Text>
       <Text>Categorias: {item.categories.join(", ")}</Text>
@@ -48,10 +49,7 @@ const styles = StyleSheet.create({
     borderRadius: 10,
     backgroundColor: "#fff",
     shadowColor: "#000",
-    shadowOffset: {
-      width: 0,
-      height: 2,
-    },
+    shadowOffset: { width: 0, height: 2 },
     shadowOpacity: 0.25,
     shadowRadius: 3.84,
     elevation: 5,
@@ -67,18 +65,6 @@ const styles = StyleSheet.create({
     padding: 10,
     borderRadius: 5,
     alignItems: "center",
-    justifyContent: "center",
-    height: 40,
-    width: 100,
-    alignSelf: "center",
-    shadowColor: "#000",
-    shadowOffset: {
-      width: 0,
-      height: 2,
-    },
-    shadowOpacity: 0.25,
-    shadowRadius: 3.84,
-    elevation: 5,
   },
   dislikeButtonText: {
     color: "#fff",
