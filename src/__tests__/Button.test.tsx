@@ -2,13 +2,13 @@ import { render, screen, fireEvent } from "@testing-library/react";
 import { Button } from "../components/Button";
 
 describe("Button Component", () => {
-  it("deve renderizar o texto corretamente", () => {
+  it("must render text Clique Aqui", () => {
     render(<Button onClick={() => {}} text="Clique Aqui" icon={undefined} />);
 
     expect(screen.getByText("Clique Aqui")).toBeInTheDocument();
   });
 
-  it("deve chamar a função onClick quando clicado", () => {
+  it("must call onClick when clicked", () => {
     const mockOnClick = jest.fn();
     render(
       <Button onClick={mockOnClick} text="Clique Aqui" icon={undefined} />
