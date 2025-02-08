@@ -42,23 +42,47 @@ const FavoritesScreen = () => {
 
 const styles = StyleSheet.create({
   item: {
-    padding: 16,
-    borderBottomWidth: 1,
-    borderBottomColor: "#ccc",
+    padding: 20,
+    marginVertical: 8,
+    marginHorizontal: 16,
+    borderRadius: 10,
+    backgroundColor: "#fff",
+    shadowColor: "#000",
+    shadowOffset: {
+      width: 0,
+      height: 2,
+    },
+    shadowOpacity: 0.25,
+    shadowRadius: 3.84,
+    elevation: 5,
   },
   title: {
     fontSize: 18,
     fontWeight: "bold",
+    marginBottom: 10,
   },
   dislikeButton: {
     marginTop: 10,
-    backgroundColor: "#ff4444",
+    backgroundColor: "#ff0000",
     padding: 10,
     borderRadius: 5,
     alignItems: "center",
+    justifyContent: "center",
+    height: 40,
+    width: 100,
+    alignSelf: "center",
+    shadowColor: "#000",
+    shadowOffset: {
+      width: 0,
+      height: 2,
+    },
+    shadowOpacity: 0.25,
+    shadowRadius: 3.84,
+    elevation: 5,
   },
   dislikeButtonText: {
     color: "#fff",
+    fontSize: 16,
     fontWeight: "bold",
   },
 });
