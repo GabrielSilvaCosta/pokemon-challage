@@ -1,36 +1,111 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+⚡ Pokédex – Web & Mobile
+Este repositório contém uma Pokédex interativa desenvolvida com Next.js, React, TypeScript, Jest e React Native. O projeto está dividido em dois módulos principais:
 
-## Getting Started
+📌 Web – Uma aplicação front-end para navegadores, oferecendo uma experiência otimizada e interativa.
+📌 Mobile – Um aplicativo desenvolvido com React Native, proporcionando uma experiência fluida em dispositivos móveis.
 
-First, run the development server:
+Abaixo, você encontrará instruções gerais para navegar no projeto e acessar as documentações específicas de cada módulo. 🚀🔥
 
-```bash
+---
+
+# Pokédex – Web
+
+## Sobre
+
+Este projeto é uma Pokédex desenvolvida com **Next.js**, **React**, **TypeScript**, **React Query** e Jest para testes. A aplicação exibe uma lista de Pokémon com detalhes como nome, categoria, habilidades e imagem. Além disso, cada Pokémon possui botões de **like** e **dislike**, permitindo a interação do usuário de forma dinâmica. 🚀
+
+## Dependências
+
+- **Fetch** para requisições HTTP
+- **React Query** para gerenciamento de estado assíncrono
+- **Jest** para testes
+- **React Testing Library** para testes de componente
+- **Tailwind CSS** para estilização
+- **React Icons** para icones
+- **TypeScript** para tipagem
+
+## Instalação
+
+1. **Clone o repositório:**
+   ```sh
+   git clone git@github.com:GabrielSilvaCosta/pokemon-challage.git
+   ```
+2. **Navegue até o diretório do projeto:**
+   ```sh
+   cd pokemon-challage
+   ```
+3. **Instale as dependências:**
+   ```sh
+   npm install
+   ```
+
+## Executando a aplicação
+
+Para rodar a API localmente, utilize o comando:
+
+```sh
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+> **Nota:** Certifique-se de estar na pasta `pokemon-challage`.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+### Requisitos
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+- **Node.js** versão **18** ou superior
 
-## Learn More
+## Testes
 
-To learn more about Next.js, take a look at the following resources:
+Para rodar os testes localmente, use o comando:
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+```sh
+npm test -- --watchAll=false
+```
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+---
 
-## Deploy on Vercel
+# Pokédex – Mobile
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+Sobre
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+A versão mobile da Pokédex foi desenvolvida utilizando **React Native**, oferecendo uma experiência imersiva para dispositivos móveis. O aplicativo exibe a lista de Pokémon com suas respectivas informações e permite interações como curtir e descurtir cada Pokémon.
+
+## Dependências
+
+**React-native-webview** para abrir páginas web dentro da aplicação.
+**React-navigation** para gerenciamento de navegação entre telas.
+**AsyncStorage** para persistência de dados no dispositivo.
+**Expo** para desenvolvimento e publicação da aplicação.
+**React-native-vector-icons** para icones.
+**TypeScript** para tipagem.
+
+## Instalação
+
+1. **Clone o repositório:**
+   ```sh
+   git clone git@github.com:GabrielSilvaCosta/pokemon-challage.git
+   ```
+2. **Navegue até o diretório do projeto:**
+   ```sh
+   cd mobile
+   ```
+3. **Instale as dependências:**
+
+   ```sh
+   npm install
+
+   ```
+
+## Executando a aplicação
+
+Para rodar a API localmente, utilize o comando:
+
+```sh
+npx expo start
+
+```
+
+> **Nota:** Certifique-se de estar na pasta `mobile`.
+
+### Requisitos
+
+- **Node.js** versão **18** ou superior
