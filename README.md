@@ -1,4 +1,4 @@
-⚡ Pokédex – Web & Mobile, 
+⚡ Pokédex – Web & Mobile
 
 Este repositório contém uma Pokédex interativa desenvolvida com Next.js, React, TypeScript, Jest e React Native. O projeto está dividido em dois módulos principais:
 
