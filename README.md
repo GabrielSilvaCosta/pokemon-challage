@@ -6,7 +6,7 @@ Este repositório contém uma Pokédex interativa desenvolvida com Next.js, Reac
 
 📌 Mobile – Um aplicativo desenvolvido com React Native, proporcionando uma experiência fluida em dispositivos móveis.
 
-Abaixo, você encontrará instruções gerais para navegar no projeto. 🚀🔥
+Abaixo, você encontrará instruções gerais para navegar no projeto 🚀🔥
 
 ---
 
