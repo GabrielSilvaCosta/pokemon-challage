@@ -88,13 +88,18 @@ A versão mobile da Pokédex foi desenvolvida utilizando **React Native**, ofere
    ```
 2. **Navegue até o diretório do projeto:**
    ```sh
-   cd mobile
+   cd pokemon-challage
    ```
-3. **Instale as dependências:**
+3. **Entrar na pasta mobile:**
 
    ```sh
-   npm install
+   cd mobile
 
+   ```
+
+4. **Instale as dependências:**
+   ```sh
+   npm install
    ```
 
 ## Executando a aplicação
