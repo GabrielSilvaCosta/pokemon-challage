@@ -2,6 +2,7 @@
 Este repositório contém uma Pokédex interativa desenvolvida com Next.js, React, TypeScript, Jest e React Native. O projeto está dividido em dois módulos principais:
 
 📌 Web – Uma aplicação front-end para navegadores, oferecendo uma experiência otimizada e interativa.
+
 📌 Mobile – Um aplicativo desenvolvido com React Native, proporcionando uma experiência fluida em dispositivos móveis.
 
 Abaixo, você encontrará instruções gerais para navegar no projeto e acessar as documentações específicas de cada módulo. 🚀🔥
