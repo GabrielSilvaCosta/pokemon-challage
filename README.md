@@ -14,7 +14,7 @@ Abaixo, você encontrará instruções gerais para navegar no projeto 🚀🔥
 
 ## Sobre
 
-Este projeto é uma Pokédex desenvolvida com **Next.js**, **React**, **TypeScript**, **React Query** e Jest para testes. A aplicação exibe uma lista de Pokémon com detalhes como nome, categoria, habilidades e imagem. Além disso, cada Pokémon possui botões de **like** e **dislike**, permitindo a interação do usuário de forma dinâmica. 🚀
+Este projeto é uma Pokédex desenvolvida com **Next.js**, **React**, **TypeScript**, **React Query** e **Jest** para testes. A aplicação exibe uma lista de Pokémon com detalhes como nome, categoria, habilidades e imagem. Além disso, cada Pokémon possui botões de **like** e **dislike**, permitindo a interação do usuário de forma dinâmica. 🚀
 
 ## Dependências
 
