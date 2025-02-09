@@ -73,12 +73,12 @@ A versão mobile da Pokédex foi desenvolvida utilizando **React Native**, ofere
 
 ## Dependências
 
-**React-native-webview** para abrir páginas web dentro da aplicação.
-**React-navigation** para gerenciamento de navegação entre telas.
-**AsyncStorage** para persistência de dados no dispositivo.
-**Expo** para desenvolvimento e publicação da aplicação.
-**React-native-vector-icons** para icones.
-**TypeScript** para tipagem.
+- **React-native-webview** para abrir páginas web dentro da aplicação.
+- **React-navigation** para gerenciamento de navegação entre telas.
+- **AsyncStorage** para persistência de dados no dispositivo.
+- **Expo** para desenvolvimento e publicação da aplicação.
+- **React-native-vector-icons** para icones.
+- **TypeScript** para tipagem.
 
 ## Instalação
 
