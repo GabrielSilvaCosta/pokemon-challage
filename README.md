@@ -43,7 +43,7 @@ Este projeto é uma Pokédex desenvolvida com **Next.js**, **React**, **TypeScri
 
 ## Executando a aplicação
 
-Para rodar a API localmente, utilize o comando:
+Para rodar a aplicação localmente, utilize o comando:
 
 ```sh
 npm run dev
@@ -99,7 +99,7 @@ A versão mobile da Pokédex foi desenvolvida utilizando **React Native**, ofere
 
 ## Executando a aplicação
 
-Para rodar a API localmente, utilize o comando:
+Para rodar o aplicativo localmente, utilize o comando:
 
 ```sh
 npx expo start
