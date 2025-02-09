@@ -49,7 +49,7 @@ Para rodar a aplicação localmente, utilize o comando:
 npm run dev
 ```
 
-> **Nota:** Certifique-se de estar na pasta `pokemon-challage`.
+> **Nota:** Certifique-se de estar no diretorio `pokemon-challage`.
 
 ### Requisitos
 
